@@ -15,7 +15,7 @@ FINAL = os.path.join(OUT_DIR, "maize_dataset.zip")
 PART = FINAL + ".part"
 EXPECTED_MD5 = "9b409e835b51c0f7b01524dcb1dfeda6"
 EXPECTED_SIZE = 8693397534
-MAX_ATTEMPTS = 6
+MAX_ATTEMPTS = 40
 CHUNK = 1 << 22  # 4 MiB
 
 
@@ -46,12 +46,12 @@ def download():
         try:
             req = urllib.request.Request(URL, headers=headers)
             r = urllib.request.urlopen(req, timeout=120)
-            if have and r.status == 200:  # server ignored Range -> restart
-                log("server ignored Range; restarting from scratch")
-                have, mode = 0, "wb"
-            elif have and r.status != 206:
-                log(f"unexpected status {r.status}; restarting from scratch")
-                have, mode = 0, "wb"
+            if have:
+                cr = r.headers.get("Content-Range", "")
+                start = int(cr.split()[1].split("-")[0]) if cr.startswith("bytes") else -1
+                if r.status != 206 or start != have:
+                    log(f"bad resume (status={r.status} cr='{cr}'); restart from 0")
+                    have, mode = 0, "wb"
             log(f"attempt {attempt}: resume at {have/1e9:.2f}GB "
                 f"status={r.status}")
             t0, done = time.time(), have

@@ -29,12 +29,17 @@ def sha256(path, limit=None):
     return h.hexdigest()
 
 
-def phash64(path):
+def phash64_fast(path):
     import imagehash
+    import numpy as np
     from PIL import Image
     with Image.open(path) as im:
-        return imagehash.phash(im, hash_size=8).hash.astype("uint64").item() \
-            if hasattr(imagehash.phash(im, hash_size=8), 'hash') else int(str(imagehash.phash(im)), 16)
+        bits = np.asarray(imagehash.phash(im, hash_size=8).hash,
+                          dtype=np.uint8).flatten()
+        v = 0
+        for b in bits[:64]:
+            v = (v << 1) | int(b)
+        return v
 
 
 def parse_yolo_label(path):
@@ -123,6 +128,42 @@ def audit(root, name):
     stats["label_without_image"] = sum(
         1 for s in stem2label if s not in labeled_stems)
 
+    # --- acquisition-sequence heuristics for leakage analysis ---
+    import re
+    grp = Counter()
+    for rel in imgs:
+        stem = os.path.splitext(os.path.basename(rel))[0]
+        # group key = filename minus trailing digit run (e.g. seq42_img0007 -> seq42_img)
+        key = re.sub(r"[\d_]+$", "", stem)
+        grp[key] += 1
+    stats["filename_groups"] = {
+        "n_groups": len(grp),
+        "largest": grp.most_common(10),
+        "note": "stem minus trailing digits; proxies a capture sequence"}
+    # detect official split layout
+    tops = {p.split(os.sep)[0] for p in
+            (os.path.relpath(x, root) for x in imgs.values())}
+    stats["top_level_dirs"] = sorted(tops)
+    stats["official_split_detected"] = bool(
+        {"train", "val", "valid", "test"} & {t.lower() for t in tops})
+    # EXIF probe on up to 20 images
+    exif_dates = Counter()
+    if have_pil:
+        try:
+            from PIL import Image
+            from PIL.ExifTags import TAGS
+            for rel, p in list(sorted(imgs.items()))[:20]:
+                try:
+                    with Image.open(p) as im:
+                        ex = im.getexif()
+                        dt = ex.get(36867) or ex.get(306)
+                        exif_dates[str(dt)] += 1
+                except Exception:
+                    exif_dates["<unreadable>"] += 1
+        except Exception:
+            pass
+    stats["exif_datetime_sample"] = dict(exif_dates)
+
     areas = stats.pop("areas")
     if areas:
         import numpy as np
@@ -146,15 +187,17 @@ def audit(root, name):
 
 
 def add_phash_groups(stats, imgs, threshold=6):
-    import imagehash  # noqa: F401
+    import numpy as np
     hashes = {}
     for rel, p in sorted(imgs.items()):
         try:
-            hashes[rel] = phash64(p)
+            hashes[rel] = phash64_fast(p)
         except Exception:
             pass
-    # union-find on hamming distance
-    parent = {r: r for r in hashes}
+    keys = sorted(hashes)
+    vals = np.array([np.uint64(hashes[k]) for k in keys])
+
+    parent = {r: r for r in keys}
 
     def find(x):
         while parent[x] != x:
@@ -162,11 +205,21 @@ def add_phash_groups(stats, imgs, threshold=6):
             x = parent[x]
         return x
 
-    keys = list(hashes)
-    for i in range(len(keys)):
-        for j in range(i + 1, len(keys)):
-            if bin(hashes[keys[i]] ^ hashes[keys[j]]).count("1") <= threshold:
-                pi, pj = find(keys[i]), find(keys[j])
+    # chunked pairwise hamming distance on uint64 via byte unpackbits popcount
+    lut = np.unpackbits(np.arange(256, dtype=np.uint8)).reshape(256, 8).sum(1)
+    B = 512
+    n = len(keys)
+    for i0 in range(0, n, B):
+        for j0 in range(i0, n, B):
+            a = vals[i0:i0 + B, None]
+            b = vals[j0:j0 + B][None, :]
+            xr = (a ^ b).astype(np.uint64).view(np.uint8).reshape(len(a), -1, 8)
+            dist = lut[xr].sum(-1)
+            ii, jj = np.where(dist <= threshold)
+            for x, y in zip(ii.tolist(), jj.tolist()):
+                if i0 + x >= j0 + y:
+                    continue
+                pi, pj = find(keys[i0 + x]), find(keys[j0 + y])
                 if pi != pj:
                     parent[pi] = pj
     groups = defaultdict(list)
@@ -174,8 +227,10 @@ def add_phash_groups(stats, imgs, threshold=6):
         groups[find(k)].append(k)
     dupes = [sorted(v) for v in groups.values() if len(v) > 1]
     stats["phash_groups"] = {
-        "threshold_hamming": threshold, "n_groups_multi": len(dupes),
-        "examples": dupes[:25], "note": "manifest IDs only; pixels not exported"}
+        "threshold_hamming": threshold, "n_images_hashed": len(keys),
+        "n_groups_multi": len(dupes),
+        "examples": dupes[:25],
+        "note": "manifest IDs only; pixels not exported"}
     return stats
 
 
