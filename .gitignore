@@ -1,0 +1,41 @@
+# Original datasets, checkpoints and generated training artifacts
+/data/
+/datasets/
+/weights/
+/runs/
+/artifacts/
+/outputs/
+*.pt
+*.pth
+*.onnx
+*.engine
+*.ckpt
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.mp4
+*.avi
+*.npy
+*.npz
+*.parquet
+# Never commit credentials, private local configuration or tokens
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+credentials*.json
+secrets*.yaml
+config.local.yaml
+# Python / development
+__pycache__/
+*.pyc
+.venv/
+venv/
+.idea/
+.vscode/
+.ipynb_checkpoints/
+# Output logs can remain local; curated reports/ metrics JSON/CSV permitted
+*.log

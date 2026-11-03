@@ -1,0 +1,31 @@
+{
+  "generated_utc": "2026-11-02",
+  "status": "BLOCKED",
+  "blocker": "no_dataset_files_present",
+  "datasets_dir": "C:\\Users\\gass\\Documents\\experiment\\datasets",
+  "detail": "Directory enumerated 2026-11-02: datasets/, runs/, weights/ were empty or absent; filesystem scan of Documents/Desktop/Downloads found no CornWeed or Weed-crop V2 archives. Task forbids downloading 8GB+ archives without asking. CornWeed maize_dataset.zip is ~8.7GB (Zenodo 7961764).",
+  "expected_sources": {
+    "CornWeed": {
+      "url": "https://zenodo.org/records/7961764",
+      "doi": "10.5281/zenodo.7961764",
+      "documented_counts": {"labeled_images": 3574, "unlabeled_images": 4981},
+      "documented_classes": ["maize", "weeds"],
+      "documented_resolutions": [[720, 1280], [480, 640]],
+      "archive_size_gb": 8.7,
+      "license": "CC-BY-4.0"
+    },
+    "Weed-crop V2": {
+      "url": "https://data.mendeley.com/datasets/mthv4ppwyw/2",
+      "documented_counts": {"labeled_images": 1120},
+      "documented_classes": "5 weed + 8 crop categories (names to be verified from label files)",
+      "license": "to verify at download"
+    }
+  },
+  "audit_script_ready": "tools/audit_dataset.py (enumerates images/labels, class counts, bbox legality, SHA-256 manifest, pHash near-duplicate groups) — run once data is provisioned",
+  "actions_taken": [
+    "filesystem scan for *weed*/*corn*/archive files — none found",
+    "created empty datasets/, runs/, weights/, datasets_derived/ under workspace root",
+    "class mapping and split rules pre-registered in class_mapping.md / data_split_proposal.md"
+  ],
+  "unblock_condition": "user provides CornWeed and Weed-crop V2 under datasets/ (or authorizes ~8.7GB+ download)"
+}

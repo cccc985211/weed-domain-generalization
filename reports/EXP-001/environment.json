@@ -1,0 +1,42 @@
+{
+  "captured_at_utc": "2026-11-03T13:25:21.580393+00:00",
+  "os": {
+    "system": "Windows",
+    "release": "10",
+    "version": "10.0.26300",
+    "machine": "AMD64"
+  },
+  "python": {
+    "executable": "C:\\Users\\gass\\miniconda3\\envs\\tsexp\\python.exe",
+    "version": "3.10.22 | packaged by Anaconda, Inc. | (main, Oct 29 2026, 20:28:38) [MSC v.1942 64 bit (AMD64)]"
+  },
+  "git": {
+    "repo": "C:\\Users\\gass\\Documents\\experiment\\weed-domain-generalization",
+    "commit": "<failed: Command '['git', '-C', 'C:\\\\Users\\\\gass\\\\Documents\\\\experiment\\\\weed-domain-generalization', 'rev-parse', 'HEAD']' returned non-zero exit status 128.>",
+    "branch": "<failed: Command '['git', '-C', 'C:\\\\Users\\\\gass\\\\Documents\\\\experiment\\\\weed-domain-generalization', 'rev-parse', '--abbrev-ref', 'HEAD']' returned non-zero exit status 128.>",
+    "dirty": "?? .github/\n?? .gitignore\n?? AGENTS.md\n?? README.md\n?? configs/\n?? docs/\n?? reports/\n?? research_plan.md\n?? tasks/\n?? templates/\n?? tools/"
+  },
+  "nvidia_smi": "Tue Nov  3 21:25:22 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 617.42                 KMD Version: 617.42        CUDA UMD Version: 13.4     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                  Driver-Model | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GeForce RTX 3090      WDDM  |   00000000:02:00.0 Off |                  N/A |\n| 30%   45C    P8             23W /  370W |     718MiB /  24576MiB |     25%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A            1796    C+G   ...indows\\System32\\ShellHost.exe      N/A      |\n|    0   N/A  N/A            4640    C+G   C:\\Windows\\explorer.exe               N/A      |\n|    0   N/A  N/A            6344    C+G   ...xyewy\\ShellExperienceHost.exe      N/A      |\n|    0   N/A  N/A            7860    C+G   ..._cw5n1h2txyewy\\SearchHost.exe      N/A      |\n|    0   N/A  N/A            8272    C+G   ...SF\\EDR\\agent\\bin\\sfavtray.exe      N/A      |\n|    0   N/A  N/A            8736    C+G   ....0.4314.58\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A            8828    C+G   ...2txyewy\\CrossDeviceResume.exe      N/A      |\n|    0   N/A  N/A           10232    C+G   ...y\\StartMenuExperienceHost.exe      N/A      |\n|    0   N/A  N/A           11816    C+G   ...ocal\\Programs\\Devin\\Devin.exe      N/A      |\n|    0   N/A  N/A           13368    C+G   ...ntrolPanel\\SystemSettings.exe      N/A      |\n|    0   N/A  N/A           13424    C+G   ....0.4314.58\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A           14868    C+G   ...5n1h2txyewy\\TextInputHost.exe      N/A      |\n|    0   N/A  N/A           14908    C+G   ...t\\Edge\\Application\\msedge.exe      N/A      |\n|    0   N/A  N/A           16228    C+G   ...ograms\\\u80a5\u732b\u4e91-\u5b98\u65b9\u7248\\Apex.exe      N/A      |\n|    0   N/A  N/A           16928    C+G   ....0.4314.58\\msedgewebview2.exe      N/A      |\n|    0   N/A  N/A           17184    C+G   ...em32\\ApplicationFrameHost.exe      N/A      |\n+-----------------------------------------------------------------------------------------+",
+  "nvidia_smi_gpu": "NVIDIA GeForce RTX 3090, 617.42, 24576 MiB, 8.6",
+  "torch": {
+    "version": "2.3.1+cu121",
+    "cuda_available": true,
+    "cuda_runtime_version": "12.1",
+    "cudnn_version": 8907,
+    "device_count": 1,
+    "device_name_0": "NVIDIA GeForce RTX 3090",
+    "device_capability_0": [
+      8,
+      6
+    ],
+    "cuda_tensor_smoke": true
+  },
+  "packages": {
+    "torchvision": "0.18.1+cu121",
+    "ultralytics": "8.4.182",
+    "cv2": "4.10.0",
+    "PIL": "12.3.0",
+    "numpy": "1.24.4"
+  },
+  "pip_freeze": "absl-py==2.5.1\nBasicTS @ file:///C:/Users/gass/Downloads/basicts-1.0.0-py3-none-any.whl#sha256=c6434ed9c8960a1ba12a6ba48a5d688df1b9335b0db5f1e73c8d1108d689bb5f\nbeautifulsoup4==4.15.0\nblosc2==2.7.1\ncertifi==2026.10.23\ncharset-normalizer==3.5.2\ncloudpickle==3.1.2\ncolorama==0.4.6\ncontourpy==1.3.2\ncycler==0.12.1\neasy-torch==1.3.3\neasydict==1.13\net_xmlfile==2.0.0\nfilelock==4.1.0\nfonttools==4.65.0\nfsspec==2026.9.0\ngdown==6.5.1\ngrpcio==1.85.1\nhuggingface_hub==0.36.2\nidna==3.20\nImageHash==4.3.2\nintel-openmp==2021.4.0\nJinja2==3.1.6\njoblib==1.6.0\nkiwisolver==1.5.1\nMarkdown==3.10.3\nMarkupSafe==3.0.3\nmatplotlib==3.10.9\nmkl==2021.4.0\nmpmath==1.3.0\nmsgpack==1.2.4\nndindex==1.10.1\nnetworkx==3.4.2\nnumexpr==2.14.1\nnumpy==1.24.4\nnvidia-ml-py==13.615.71\nopencv-python==4.10.0.84\nopenpyxl==3.1.5\npackaging==26.3\npandas==2.3.3\npillow==12.3.0\npolars==2.0.0\npolars-runtime-32==2.0.0\nprotobuf==7.36.2\npsutil==7.2.2\npy-cpuinfo==9.0.0\npyparsing==3.3.3\nPySocks==1.7.1\npython-dateutil==3.0.0\npytz==2026.6\nPyWavelets==1.8.0\nPyYAML==6.0.3\nregex==2026.9.29\nrequests==2.34.2\nsafetensors==0.8.0\nscikit-learn==1.7.2\nscipy==1.15.3\nsetproctitle==1.3.8\nsix==1.17.0\nsoupsieve==2.10\nsympy==1.14.0\ntables==3.10.1\ntbb==2021.13.1\ntensorboard==2.18.0\ntensorboard-data-server==0.7.2\nthreadpoolctl==3.7.0\ntokenizers==0.19.1\ntorch==2.3.1+cu121\ntorchvision==0.18.1+cu121\ntqdm==4.67.1\ntransformers==4.40.1\ntyping_extensions==4.16.0\ntzdata==2026.6\nultralytics==8.4.182\nultralytics-thop==2.2.4\nurllib3==2.8.0\nWerkzeug==3.1.9"
+}

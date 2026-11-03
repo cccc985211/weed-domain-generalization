@@ -1,0 +1,21 @@
+# EXP-001 experiment report
+
+- Outcome: **CONDITIONAL** — Steps A/C/D done and verifiable; Step B is BLOCKED on dataset provisioning (no CornWeed / Weed-crop V2 files on disk; download needs explicit authorization, CornWeed ≈8.7 GB). All deliverables bounded and documented; nothing trained beyond 2-epoch smoke tests.
+- Research question & preregistered hypothesis: single-source DG weed detection; 3-module hypothesis A/B/C; model roster revised 2026-11-02 → **YOLO26n primary / YOLO11n historical baseline / YOLO26s stronger baseline**.
+- Experiment ID / Git commit / UTC: EXP-001 · branch `exp-001-local-audit` (commit at push time; repo git-initialized during this task) · 2026-11-03.
+- Model weights origin and SHA-256: ultralytics assets release v8.4.0 → `weights/*.pt` (outside git). `yolo26n=9b09cc8b…f4fef` (5.54 MB), `yolo11n=0ebbc80d…d14987` (5.61 MB), `yolo26s=646f8bc3…e0a656` (20.42 MB).
+- Source train/val manifest hashes: real splits **not created** — pending audit. Placeholder synthetic split `smoke_weed_v1` manifest_sha256 `c8557755…02409` (24 train/8 val, seed 42).
+- Held-out test manifest hashes: none — datasets absent.
+- OS, GPU, VRAM, driver, CUDA, torch, Ultralytics: `environment.json` — Win10, RTX 3090 24GB, driver 617.42, CUDA 12.1 runtime, torch 2.3.1+cu121, torchvision 0.18.1+cu121, **ultralytics 8.4.182** (YOLO26 supported, `yolo26.yaml` verified), Python 3.10.22.
+- Hyperparameters/seeds/epochs/aug: smoke config epochs=2, imgsz=640, batch=8, seed=42, workers=0, deterministic=True, optimizer=auto→AdamW(0.002), amp=True — see `model_selection/report.md` + `runs/*/args.yaml`.
+- What changed vs control: n/a for smoke; tooling (`tools/*.py`), docs, plan/task text updated for the YOLO26 roster.
+- Pipeline/data/metrics sanity checks: dataloader scan clean (24/8 imgs, 0 corrupt); fwd+bwd graph check per model OK; checkpoints written & re-validated; results.csv consistent with console.
+- Source-domain val mAP50/mAP50:95/weed recall: synthetic-only values in `model_selection/smoke_metrics.json` — **not meaningful, not a ranking**.
+- Frozen external-domain metrics: none computed (protocol respected).
+- GPU train-hours / max memory / latency: ~0.001 h per model; peaks 1,186–2,354 MiB; eval inference 3.9–7.4 ms/img (batch 1).
+- Per-seed mean ± std: n/a (single seed, smoke).
+- Failure cases / anomalous runs: (a) dataset audit BLOCKED; (b) script serialization bug crashed first run — fixed, rerun cleanly; (c) GitHub/PyPI connectivity flaky → Tsinghua mirror used; AMP self-check retried once on download timeout.
+- Target-domain metric inspected before freeze: **no**.
+- Interpretation & limitations: (i) environment + YOLO26 support verified end-to-end; (ii) module-overlap analysis done (`model_selection/module_overlap.md`) — A orthogonal, B weak/partially redundant, C primary and minimal-change feasible (forward already exposes neck `feats`); (iii) all quantitative numbers are placeholder-scale; (iv) `tsexp` conda env was extended, not recreated (documented); (v) no GitHub remote/PR — `gh` absent, auth unknown.
+- Changes proposed for next task (NOT executed): provision datasets → run `tools/audit_dataset.py` → approve manifests → EXP-002 baselines (E0 + standard-aug control) on YOLO26n with YOLO11n/YOLO26s references.
+- Evidence paths & hashes: `environment.json`, `dataset_audit.json`, `class_mapping.md`, `data_split_proposal.md`, `literature_matrix.md`, `model_selection/{report.md,smoke_metrics.json,model_support.json,module_overlap.md,runs/}`, `runs/EXP-001/model_selection/*` (outside git), `datasets_derived/smoke_weed_v1/manifest.json`.
