@@ -1,0 +1,137 @@
+{
+  "generated_utc": "2026-11-03T14:32:35.190621+00:00",
+  "note": "metrics on SYNTHETIC placeholder data - diagnostic only",
+  "yolo26n": {
+    "checkpoint": "C:\\Users\\gass\\Documents\\experiment\\runs\\EXP-001\\model_selection\\yolo26n\\weights\\best.pt",
+    "exists": true,
+    "head_class": "Detect",
+    "has_one2one": true,
+    "end2end_attr": false,
+    "val_one2many_nms": {
+      "metrics/precision(B)": 0.024074074074074074,
+      "metrics/recall(B)": 1.0,
+      "metrics/mAP50(B)": 0.0367123935666982,
+      "metrics/mAP50-95(B)": 0.027167654258591106,
+      "fitness": 0.027167654258591106
+    },
+    "val_one2one_nmsfree": {
+      "metrics/precision(B)": 0.499571720402374,
+      "metrics/recall(B)": 0.5128205128205128,
+      "metrics/mAP50(B)": 0.4315564054078885,
+      "metrics/mAP50-95(B)": 0.33707917672197746,
+      "fitness": 0.33707917672197746
+    },
+    "eval_output_shapes": [
+      [
+        1,
+        5,
+        8400
+      ],
+      [
+        1,
+        4,
+        8400
+      ],
+      [
+        1,
+        1,
+        8400
+      ],
+      [
+        1,
+        64,
+        80,
+        80
+      ],
+      [
+        1,
+        128,
+        40,
+        40
+      ],
+      [
+        1,
+        256,
+        20,
+        20
+      ],
+      [
+        1,
+        4,
+        8400
+      ],
+      [
+        1,
+        1,
+        8400
+      ],
+      [
+        1,
+        64,
+        80,
+        80
+      ],
+      [
+        1,
+        128,
+        40,
+        40
+      ],
+      [
+        1,
+        256,
+        20,
+        20
+      ]
+    ]
+  },
+  "yolo11n": {
+    "checkpoint": "C:\\Users\\gass\\Documents\\experiment\\runs\\EXP-001\\model_selection\\yolo11n\\weights\\best.pt",
+    "exists": true,
+    "head_class": "Detect",
+    "has_one2one": false,
+    "end2end_attr": false,
+    "val_one2many_nms": {
+      "metrics/precision(B)": 0.74555333871938,
+      "metrics/recall(B)": 0.6012465128513619,
+      "metrics/mAP50(B)": 0.695839820688014,
+      "metrics/mAP50-95(B)": 0.47359641707879463,
+      "fitness": 0.47359641707879463
+    },
+    "eval_output_shapes": [
+      [
+        1,
+        5,
+        8400
+      ],
+      [
+        1,
+        64,
+        8400
+      ],
+      [
+        1,
+        1,
+        8400
+      ],
+      [
+        1,
+        64,
+        80,
+        80
+      ],
+      [
+        1,
+        128,
+        40,
+        40
+      ],
+      [
+        1,
+        256,
+        20,
+        20
+      ]
+    ]
+  }
+}

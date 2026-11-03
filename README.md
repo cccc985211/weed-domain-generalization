@@ -2,7 +2,7 @@
 
 **Planning version:** 2026-11-02. Research hypothesis, not verified improvements.
 
-Goal: develop a source-only generalizable YOLO11n weed detector with three togglable training modules:
+Goal: develop a source-only generalizable weed detector (primary candidate YOLO26n; YOLO11n historical baseline, YOLO26s stronger baseline) with three togglable training modules:
 A = object-preserving background domain randomization; B = progressive photometric strength scheduling; C = scale-aware ROI feature consistency.
 
 ## Recommended first actions
