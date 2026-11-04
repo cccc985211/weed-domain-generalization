@@ -131,15 +131,23 @@ def audit(root, name):
     # --- acquisition-sequence heuristics for leakage analysis ---
     import re
     grp = Counter()
+    grp2 = Counter()
     for rel in imgs:
         stem = os.path.splitext(os.path.basename(rel))[0]
-        # group key = filename minus trailing digit run (e.g. seq42_img0007 -> seq42_img)
+        # generic: stem minus trailing digit run
         key = re.sub(r"[\d_]+$", "", stem)
         grp[key] += 1
+        # CornWeed schema: <loc>_<YYMMDD>_<platform?>_color_<frame>
+        m = re.match(r"(.+?)_(\d{6})_(.*)_(\d+)$", stem)
+        grp2[m.group(1) + "_" + m.group(2) + "_" + m.group(3)
+            if m else "NO_MATCH"] += 1
     stats["filename_groups"] = {
         "n_groups": len(grp),
         "largest": grp.most_common(10),
         "note": "stem minus trailing digits; proxies a capture sequence"}
+    stats["sequence_groups_loc_date_platform"] = {
+        "n_groups": len(grp2), "groups": dict(grp2),
+        "note": "filename schema location_date_platform; leakage-safe split unit"}
     # detect official split layout
     tops = {p.split(os.sep)[0] for p in
             (os.path.relpath(x, root) for x in imgs.values())}

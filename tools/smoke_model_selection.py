@@ -11,7 +11,7 @@ For each model, on the SAME deterministic synthetic split
   * 2-epoch training: wall time, peak CUDA memory, val metrics (NOT a ranking)
 
 Outputs -> reports/EXP-001/model_selection/smoke_metrics.json (+ per-model logs)
-Run artifacts -> C:/Users/gass/Documents/experiment/runs/EXP-001/model_selection
+Run artifacts -> <WORKSPACE>/runs/EXP-001/model_selection
 """
 import hashlib
 import json
@@ -21,7 +21,7 @@ import traceback
 from datetime import datetime, timezone
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EXP = r"C:\Users\gass\Documents\experiment"
+EXP = os.path.dirname(REPO)
 WEIGHTS = os.path.join(EXP, "weights")
 DATA_YAML = os.path.join(EXP, "datasets_derived", "smoke_weed_v1", "data.yaml")
 RUNS = os.path.join(EXP, "runs", "EXP-001", "model_selection")

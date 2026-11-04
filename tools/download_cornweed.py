@@ -10,7 +10,8 @@ import time
 import urllib.request
 
 URL = "https://zenodo.org/records/7961764/files/maize_dataset.zip?download=1"
-OUT_DIR = r"C:\Users\gass\Documents\experiment\datasets"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT_DIR = os.path.join(os.path.dirname(REPO), "datasets")
 FINAL = os.path.join(OUT_DIR, "maize_dataset.zip")
 PART = FINAL + ".part"
 EXPECTED_MD5 = "9b409e835b51c0f7b01524dcb1dfeda6"

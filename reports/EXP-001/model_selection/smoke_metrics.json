@@ -1,9 +1,9 @@
 {
   "generated_utc": "2026-11-03T14:18:44.327975+00:00",
-  "data_yaml": "C:\\Users\\gass\\Documents\\experiment\\datasets_derived\\smoke_weed_v1\\data.yaml",
+  "data_yaml": "<WORKSPACE>\\datasets_derived\\smoke_weed_v1\\data.yaml",
   "note": "synthetic placeholder split; metrics are a pipeline check, NOT an accuracy ranking",
   "common_train_args": {
-    "data": "C:\\Users\\gass\\Documents\\experiment\\datasets_derived\\smoke_weed_v1\\data.yaml",
+    "data": "<WORKSPACE>\\datasets_derived\\smoke_weed_v1\\data.yaml",
     "epochs": "2",
     "imgsz": "640",
     "batch": "8",
@@ -12,7 +12,7 @@
     "device": "0",
     "deterministic": "True",
     "pretrained": "True",
-    "project": "C:\\Users\\gass\\Documents\\experiment\\runs\\EXP-001\\model_selection",
+    "project": "<WORKSPACE>\\runs\\EXP-001\\model_selection",
     "exist_ok": "True",
     "verbose": "False"
   },
@@ -20,7 +20,7 @@
     {
       "model": "yolo26n.pt",
       "started_utc": "2026-11-03T14:18:06.479836+00:00",
-      "weights_path": "C:\\Users\\gass\\Documents\\experiment\\weights\\yolo26n.pt",
+      "weights_path": "<WORKSPACE>\\weights\\yolo26n.pt",
       "weights_sha256": "9b09cc8bf347f0fc8a5f7657480587f25db09b34bf33b0652110fb03a8ad4fef",
       "weights_mb": 5.54,
       "architecture": {
@@ -153,14 +153,14 @@
         "hsv_v": "0.4",
         "close_mosaic": "10"
       },
-      "run_dir": "C:\\Users\\gass\\Documents\\experiment\\runs\\EXP-001\\model_selection\\yolo26n",
+      "run_dir": "<WORKSPACE>\\runs\\EXP-001\\model_selection\\yolo26n",
       "wall_s_total": 15.2,
       "finished_utc": "2026-11-03T14:18:21.669755+00:00"
     },
     {
       "model": "yolo11n.pt",
       "started_utc": "2026-11-03T14:18:21.669755+00:00",
-      "weights_path": "C:\\Users\\gass\\Documents\\experiment\\weights\\yolo11n.pt",
+      "weights_path": "<WORKSPACE>\\weights\\yolo11n.pt",
       "weights_sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1",
       "weights_mb": 5.61,
       "architecture": {
@@ -255,14 +255,14 @@
         "hsv_v": "0.4",
         "close_mosaic": "10"
       },
-      "run_dir": "C:\\Users\\gass\\Documents\\experiment\\runs\\EXP-001\\model_selection\\yolo11n",
+      "run_dir": "<WORKSPACE>\\runs\\EXP-001\\model_selection\\yolo11n",
       "wall_s_total": 9.7,
       "finished_utc": "2026-11-03T14:18:31.402704+00:00"
     },
     {
       "model": "yolo26s.pt",
       "started_utc": "2026-11-03T14:18:31.405704+00:00",
-      "weights_path": "C:\\Users\\gass\\Documents\\experiment\\weights\\yolo26s.pt",
+      "weights_path": "<WORKSPACE>\\weights\\yolo26s.pt",
       "weights_sha256": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b",
       "weights_mb": 20.42,
       "architecture": {
@@ -395,7 +395,7 @@
         "hsv_v": "0.4",
         "close_mosaic": "10"
       },
-      "run_dir": "C:\\Users\\gass\\Documents\\experiment\\runs\\EXP-001\\model_selection\\yolo26s",
+      "run_dir": "<WORKSPACE>\\runs\\EXP-001\\model_selection\\yolo26s",
       "wall_s_total": 12.9,
       "finished_utc": "2026-11-03T14:18:44.326969+00:00"
     }

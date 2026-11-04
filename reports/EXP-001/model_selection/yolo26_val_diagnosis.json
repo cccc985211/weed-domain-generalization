@@ -2,7 +2,7 @@
   "generated_utc": "2026-11-03T14:32:35.190621+00:00",
   "note": "metrics on SYNTHETIC placeholder data - diagnostic only",
   "yolo26n": {
-    "checkpoint": "C:\\Users\\gass\\Documents\\experiment\\runs\\EXP-001\\model_selection\\yolo26n\\weights\\best.pt",
+    "checkpoint": "<WORKSPACE>\\runs\\EXP-001\\model_selection\\yolo26n\\weights\\best.pt",
     "exists": true,
     "head_class": "Detect",
     "has_one2one": true,
@@ -86,7 +86,7 @@
     ]
   },
   "yolo11n": {
-    "checkpoint": "C:\\Users\\gass\\Documents\\experiment\\runs\\EXP-001\\model_selection\\yolo11n\\weights\\best.pt",
+    "checkpoint": "<WORKSPACE>\\runs\\EXP-001\\model_selection\\yolo11n\\weights\\best.pt",
     "exists": true,
     "head_class": "Detect",
     "has_one2one": false,

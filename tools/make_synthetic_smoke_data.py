@@ -1,11 +1,11 @@
 """Deterministic synthetic 'weed' dataset for EXP-001 pipeline smoke tests.
 
 PLACEHOLDER ONLY. The real CornWeed/Weed-crop V2 datasets are not yet present
-under C:\\Users\\gass\\Documents\\experiment\\datasets, so a tiny synthetic
+under <WORKSPACE>/datasets, so a tiny synthetic
 one-class dataset is generated to validate the train/val/save pipeline.
 It is NOT used for any accuracy claim. Same fixed split for every model.
 
-Output: C:\\Users\\gass\\Documents\\experiment\\datasets_derived\\smoke_weed_v1
+Output: <WORKSPACE>/datasets_derived/smoke_weed_v1
 """
 import hashlib
 import json
@@ -14,7 +14,8 @@ import os
 import numpy as np
 from PIL import Image
 
-OUT = r"C:\Users\gass\Documents\experiment\datasets_derived\smoke_weed_v1"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(os.path.dirname(REPO), "datasets_derived", "smoke_weed_v1")
 SEED = 42
 W, H = 640, 640
 N_TRAIN, N_VAL = 24, 8

@@ -11,8 +11,8 @@ import json
 import os
 from datetime import datetime, timezone
 
-EXP = r"C:\Users\gass\Documents\experiment"
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EXP = os.path.dirname(REPO)
 DATA_YAML = os.path.join(EXP, "datasets_derived", "smoke_weed_v1", "data.yaml")
 RUNS = os.path.join(EXP, "runs", "EXP-001", "model_selection")
 OUT = os.path.join(REPO, "reports", "EXP-001", "model_selection",

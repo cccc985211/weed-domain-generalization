@@ -11,7 +11,21 @@ import sys
 from datetime import datetime, timezone
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+HOME = os.path.expanduser("~")
 OUT = os.path.join(REPO, "reports", "EXP-001", "environment.json")
+
+
+def scrub(obj):
+    """Remove private filesystem paths from recorded strings."""
+    if isinstance(obj, str):
+        return (obj.replace(REPO, "<REPO>")
+                   .replace(HOME, "<HOME>")
+                   .replace(HOME.replace("\\", "/"), "<HOME>"))
+    if isinstance(obj, dict):
+        return {k: scrub(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [scrub(v) for v in obj]
+    return obj
 
 
 def _run(cmd):
@@ -76,7 +90,7 @@ def main():
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
-        json.dump(info, f, indent=2)
+        json.dump(scrub(info), f, indent=2)
     print(f"wrote {OUT}")
 
 

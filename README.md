@@ -28,15 +28,15 @@ No fabricated results; no acceptance/indexing guarantees.
 
 ## Fixed Windows workspace for this project
 
-Workspace root: `C:\Users\gass\Documents\experiment`
+Workspace root: `<WORKSPACE>` (the experiment directory one level above this repo)
 
-Git checkout: `C:\Users\gass\Documents\experiment\weed-domain-generalization`
+Git checkout: `<WORKSPACE>\weed-domain-generalization`
 
-Data (outside git): `C:\Users\gass\Documents\experiment\datasets`
+Data (outside git): `<WORKSPACE>\datasets`
 
-Runs (outside git): `C:\Users\gass\Documents\experiment\runs`
+Runs (outside git): `<WORKSPACE>\runs`
 
-Weights (outside git): `C:\Users\gass\Documents\experiment\weights`
+Weights (outside git): `<WORKSPACE>\weights`
 
 If the package cannot be downloaded, the research plan can be reconstructed by a local Coding Agent from the EXP-001 prompt in ChatGPT. No download is required to audit the environment.
 
