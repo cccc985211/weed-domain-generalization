@@ -1,0 +1,21 @@
+# EXP-NNN experiment report
+
+- Outcome: `PASS / CONDITIONAL / BLOCKED / FAILED`
+- Research question & preregistered hypothesis:
+- Experiment ID / Git commit / UTC timestamp:
+- Model weights origin and SHA-256:
+- Source train/val manifest hashes:
+- Held-out test manifest hashes (never optimized):
+- OS, GPU, VRAM, driver, CUDA, torch, Ultralytics:
+- Hyperparameters, seeds, training epochs, augmentation flags:
+- Exactly what was changed vs the control:
+- Pipeline/data/metrics sanity checks:
+- Source-domain val mAP50 / mAP50:95 / weed recall:
+- Frozen external-domain metrics (only after protocol locking):
+- GPU train-hours, max memory, and batch=1 inference latency:
+- Per-seed metrics mean ± standard deviation (where available):
+- Failure cases, logs, anomalous runs:
+- Whether a target-domain metric was inspected before method freeze:
+- Interpretation, limitations, competing explanations:
+- Changes for next task **proposed only, not executed**:
+- Evidence paths and file hashes:

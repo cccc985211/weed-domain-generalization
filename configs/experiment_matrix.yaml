@@ -1,0 +1,34 @@
+project: weed-dg-3m
+research_status: hypothesis_only
+model: yolo26n.pt          # primary research candidate (EXP-001 revision 2026-11-02)
+model_historical_baseline: yolo11n.pt
+model_stronger_baseline: yolo26s.pt
+imgsz: 640
+device: 0
+workers_windows_initial: 0
+seed_first_run: 42
+source_domain: CornWeed
+heldout_domains:
+  - Weed-crop V2
+  - CottonWeedDet12 # optional, after annotation audit
+primary_label_space:
+  names: [weed]
+  warning: "Confirm class remapping and annotation completeness before use"
+external_target_used_for_tuning: false
+experiment_matrix:
+  E0: {A: false, B: false, C: false}
+  E1: {A: true, B: false, C: false}
+  E2: {A: false, B: true, C: false}
+  E3: {A: false, B: false, C: true}
+  E4: {A: true, B: true, C: false}
+  E5: {A: true, B: false, C: true}
+  E6: {A: false, B: true, C: true}
+  E7: {A: true, B: true, C: true}
+metrics:
+  - map50
+  - map50_95
+  - weed_recall
+  - small_weed_recall
+  - single_image_latency
+  - params
+  - training_gpu_hours
