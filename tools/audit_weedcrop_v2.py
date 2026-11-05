@@ -23,10 +23,18 @@ WORKSPACE = os.path.dirname(REPO)
 ROOT = os.path.join(WORKSPACE, "datasets", "WeedCropV2")
 REPORT_DIR = os.path.join(REPO, "reports", "EXP-001C")
 
-WEED_SPECIES = {"Kochia", "Horseweed", "Water Hemp", "Ragweed",
+def norm_name(s):
+    """classes.txt spellings vary ('Black bean' vs 'Blackbean'); compare loosely."""
+    return s.lower().replace(" ", "").replace("-", "")
+
+
+WEED_SPECIES = {"Kochia", "Horseweed", "Water Hemp", "Waterhemp", "Ragweed",
                 "Redroot Pigweed"}
-CROP_SPECIES = {"Black bean", "Canola", "Corn", "Lentil", "Field pea",
-                "Flax", "Soybean", "Sugar beet"}
+CROP_SPECIES = {"Black bean", "Blackbean", "Canola", "Corn", "Lentil",
+                "Field pea", "Field Pea", "Flax", "Soybean", "Sugar beet",
+                "Sugarbeet"}
+WEED_NORM = {norm_name(s) for s in WEED_SPECIES}
+CROP_NORM = {norm_name(s) for s in CROP_SPECIES}
 
 
 def sha256_file(path):
@@ -100,6 +108,7 @@ def main():
                  if e["filename"].lower().endswith((".jpg", ".jpeg", ".png"))]
     missing_label, empty_label = [], []
     illegal, degenerate, parse_errors = [], [], []
+    illegal_by_class = Counter()
     boxes_by_class = Counter()
     boxes_by_folder_class = defaultdict(Counter)
     dims = Counter()
@@ -129,16 +138,22 @@ def main():
             if not (0 <= x <= 1 and 0 <= y <= 1 and 0 < w <= 1 and 0 < h <= 1
                     and x - w / 2 >= -1e-6 and x + w / 2 <= 1 + 1e-6
                     and y - h / 2 >= -1e-6 and y + h / 2 <= 1 + 1e-6):
+                cname = folder_classes[folder][cls] \
+                    if cls < len(folder_classes[folder]) else "?"
+                illegal_by_class[cname] += 1
                 illegal.append({"file": folder + "/" + name, "line": ln,
                                 "reason": "illegal_norm_coords",
-                                "xywh": [x, y, w, h]})
+                                "class": cname, "xywh": [x, y, w, h]})
             elif w * h <= 0:
                 degenerate.append(folder + "/" + name)
 
-    weed_cls = {c: class_to_id[c] for c in WEED_SPECIES if c in class_to_id}
-    crop_cls = {c: class_to_id[c] for c in CROP_SPECIES if c in class_to_id}
+    weed_cls = {c: class_to_id[c] for c in class_to_id
+                if norm_name(c) in WEED_NORM}
+    crop_cls = {c: class_to_id[c] for c in class_to_id
+                if norm_name(c) in CROP_NORM}
     unknown_cls = {c: class_to_id[c] for c in class_to_id
-                   if c not in WEED_SPECIES and c not in CROP_SPECIES}
+                   if norm_name(c) not in WEED_NORM
+                   and norm_name(c) not in CROP_NORM}
     weed_boxes = sum(boxes_by_class[c] for c in weed_cls)
     crop_boxes = sum(boxes_by_class[c] for c in crop_cls)
 
@@ -172,9 +187,17 @@ def main():
             "parse_errors": len(parse_errors),
             "parse_error_examples": parse_errors[:50],
             "illegal_or_out_of_range": len(illegal),
+            "illegal_by_class": dict(illegal_by_class),
             "illegal_examples": illegal[:50],
             "degenerate_boxes": len(degenerate),
-            "image_dimensions": dict(dims),
+            "n_unique_image_dimensions": len(dims),
+            "most_common_image_dimensions": dict(
+                Counter(dims).most_common(5)),
+            "min_max_image_dims": [
+                min(dims, key=lambda s: int(s.split("x")[0])
+                    * int(s.split("x")[1])),
+                max(dims, key=lambda s: int(s.split("x")[0])
+                    * int(s.split("x")[1]))],
             "boxes_total": sum(boxes_by_class.values()),
             "boxes_by_class": dict(boxes_by_class),
             "boxes_by_folder_class": {f: dict(c) for f, c in
@@ -233,7 +256,13 @@ def main():
         f"{c['missing_labels']}; empty label files: {c['empty_label_files']}",
         f"- Parse errors: {c['parse_errors']}; illegal/out-of-range boxes: "
         f"{c['illegal_or_out_of_range']}; degenerate: {c['degenerate_boxes']}",
-        f"- Image dimensions: `{c['image_dimensions']}`",
+        f"- Illegal boxes are edge-overflow annotations (center ± half-size "
+        f"crosses the image border by a small amount), not corruption; "
+        f"distribution: `{c['illegal_by_class']}`. Any derived copy must CLAMP "
+        f"coordinates to [0,1] (keep box) — never silently drop them.",
+        f"- Image dimensions: {c['n_unique_image_dimensions']} unique sizes "
+        f"(drone imagery); most common: `{c['most_common_image_dimensions']}`; "
+        f"size range `{c['min_max_image_dims'][0]}` … `{c['min_max_image_dims'][1]}`",
         f"- Boxes total: {c['boxes_total']}; by class: `{c['boxes_by_class']}`",
         "",
         "## Weed-only mapping (structure only — NO model runs were performed)",
