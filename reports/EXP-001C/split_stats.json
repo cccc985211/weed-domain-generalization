@@ -1,0 +1,136 @@
+{
+  "protocol_salt": "EXP001C-LOSO-v1",
+  "block": 50,
+  "period": 60,
+  "train_pct": 80,
+  "phash_hamming": 6,
+  "folds": {
+    "fold1": {
+      "test_stream": "Langsenkamp_210722_bonirob",
+      "images_by_role": {
+        "train": 1817,
+        "val": 250,
+        "test": 1054
+      },
+      "boxes_by_role": {
+        "test": {
+          "weed(0)": 51579,
+          "maize(1)": 4106
+        },
+        "train": {
+          "weed(0)": 152015,
+          "maize(1)": 14508
+        },
+        "val": {
+          "weed(0)": 16409,
+          "maize(1)": 1796
+        }
+      },
+      "buffer_excluded": 453,
+      "duplicate_excluded": 0,
+      "buffer_images_with_phash_overlap": 62,
+      "stream_role_composition": {
+        "Langsenkamp_210722_bonirob": {
+          "test": 1054
+        },
+        "Langsenkamp_210727_bonirob": {
+          "train": 457,
+          "val": 100
+        },
+        "Langsenkamp_210727_handheld": {
+          "train": 1360,
+          "val": 150
+        }
+      },
+      "train_list_sha256": "bdf3591fd9b26faf0660215da044d2fe5d08e4c5f56cbe86ddd07537014bfe6f",
+      "val_list_sha256": "81a09b5a6101df2fe8bc3622932b4fbd3a918e86dfb10aebb011ade57350fac5",
+      "test_list_sha256": "54abfbbe4b733f7e4b40e800242c54d98f973c5b81b52a3bd4e9fece73160dc9"
+    },
+    "fold2": {
+      "test_stream": "Langsenkamp_210727_bonirob",
+      "images_by_role": {
+        "train": 2153,
+        "val": 200,
+        "test": 671
+      },
+      "boxes_by_role": {
+        "train": {
+          "weed(0)": 157208,
+          "maize(1)": 15644
+        },
+        "val": {
+          "weed(0)": 14659,
+          "maize(1)": 1528
+        },
+        "test": {
+          "weed(0)": 45573,
+          "maize(1)": 2868
+        }
+      },
+      "buffer_excluded": 550,
+      "duplicate_excluded": 0,
+      "buffer_images_with_phash_overlap": 67,
+      "stream_role_composition": {
+        "Langsenkamp_210722_bonirob": {
+          "train": 793,
+          "val": 50
+        },
+        "Langsenkamp_210727_bonirob": {
+          "test": 671
+        },
+        "Langsenkamp_210727_handheld": {
+          "train": 1360,
+          "val": 150
+        }
+      },
+      "train_list_sha256": "fccf1bc7b896a9def836fd1182f29e423895d0fc6f63e91d4d595583b4fa9829",
+      "val_list_sha256": "1fc7970d7d7ff2ff64f0975f8b09547583df754575c345f6ae1dc59d87c7268d",
+      "test_list_sha256": "ef96ebb6e8694be63dd80359804dd6b71ba32ba97b491188db452f1894910182"
+    },
+    "fold3": {
+      "test_stream": "Langsenkamp_210727_handheld",
+      "images_by_role": {
+        "train": 1250,
+        "val": 150,
+        "test": 1849
+      },
+      "boxes_by_role": {
+        "train": {
+          "weed(0)": 71609,
+          "maize(1)": 5042
+        },
+        "val": {
+          "weed(0)": 8066,
+          "maize(1)": 628
+        },
+        "test": {
+          "weed(0)": 160588,
+          "maize(1)": 17011
+        }
+      },
+      "buffer_excluded": 325,
+      "duplicate_excluded": 0,
+      "buffer_images_with_phash_overlap": 5,
+      "stream_role_composition": {
+        "Langsenkamp_210722_bonirob": {
+          "train": 793,
+          "val": 50
+        },
+        "Langsenkamp_210727_bonirob": {
+          "train": 457,
+          "val": 100
+        },
+        "Langsenkamp_210727_handheld": {
+          "test": 1849
+        }
+      },
+      "train_list_sha256": "575d07cceb5b4dfb474e4eb399dced6eabe148c18bc2665a11575a764cb09bd7",
+      "val_list_sha256": "5c714c9eca1470f589657aa2524cbaf3023b2c9dd2c4b32181355339813d2cad",
+      "test_list_sha256": "b1b2ad3b76aa6514401b7251414a91efb7eec8686d473bad13e3ae3695e44d00"
+    }
+  },
+  "manifest_sha256": "54dc46a34e44318f99781e51f9bc2950266111b54bf0d31c0fa3e0af9fe22979",
+  "conflicts_csv_sha256": "e074fd40a1ab047bd516fe83f4cfaca4dc252fc9b80c3c41a64662f23f8ad1ad",
+  "labeled_images": 3574,
+  "timing_seconds": 74.6
+}

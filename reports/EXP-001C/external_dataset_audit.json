@@ -1,0 +1,937 @@
+{
+  "status": "AUDITED",
+  "dataset": "mthv4ppwyw",
+  "version": 2,
+  "source_page": "https://data.mendeley.com/datasets/mthv4ppwyw/2",
+  "doi": "10.17632/mthv4ppwyw.2",
+  "license": "CC BY 4.0",
+  "publisher_listing_sha256_note": "every file verified against publisher per-file sha256 (2248/2248); official zip sha256 3f137d4fba4146077fd96ce6a35e938cf6aa41a5ed07c9709d4a92586db2acee applies to the publisher zip, which this network cannot fetch (S3 403); per-file verification is stricter",
+  "files_verified": 2248,
+  "files_expected": 2248,
+  "scenario_folders": {
+    "Black_bean": {
+      "classes.txt": [
+        "Blackbean",
+        "Canola",
+        "Corn",
+        "Field Pea",
+        "Flax",
+        "Horseweed",
+        "Kochia",
+        "Lentil",
+        "Ragweed",
+        "Redroot Pigweed",
+        "Soybean",
+        "Sugar beet",
+        "Waterhemp"
+      ],
+      "n_files": 281
+    },
+    "Canola": {
+      "classes.txt": [
+        "Blackbean",
+        "Canola",
+        "Corn",
+        "Field Pea",
+        "Flax",
+        "Horseweed",
+        "Kochia",
+        "Lentil",
+        "Ragweed",
+        "Redroot Pigweed",
+        "Soybean",
+        "Sugar beet",
+        "Waterhemp"
+      ],
+      "n_files": 281
+    },
+    "Corn": {
+      "classes.txt": [
+        "Blackbean",
+        "Canola",
+        "Corn",
+        "Field Pea",
+        "Flax",
+        "Horseweed",
+        "Kochia",
+        "Lentil",
+        "Ragweed",
+        "Redroot Pigweed",
+        "Soybean",
+        "Sugar beet",
+        "Waterhemp"
+      ],
+      "n_files": 281
+    },
+    "Field_pea": {
+      "classes.txt": [
+        "Blackbean",
+        "Canola",
+        "Corn",
+        "Field Pea",
+        "Flax",
+        "Horseweed",
+        "Kochia",
+        "Lentil",
+        "Ragweed",
+        "Redroot Pigweed",
+        "Soybean",
+        "Sugar beet",
+        "Waterhemp"
+      ],
+      "n_files": 281
+    },
+    "Flax": {
+      "classes.txt": [
+        "Blackbean",
+        "Canola",
+        "Corn",
+        "Field Pea",
+        "Flax",
+        "Horseweed",
+        "Kochia",
+        "Lentil",
+        "Ragweed",
+        "Redroot Pigweed",
+        "Soybean",
+        "Sugar beet",
+        "Waterhemp"
+      ],
+      "n_files": 281
+    },
+    "Lentil": {
+      "classes.txt": [
+        "Blackbean",
+        "Canola",
+        "Corn",
+        "Field Pea",
+        "Flax",
+        "Horseweed",
+        "Kochia",
+        "Lentil",
+        "Ragweed",
+        "Redroot Pigweed",
+        "Soybean",
+        "Sugar beet",
+        "Waterhemp"
+      ],
+      "n_files": 281
+    },
+    "Soybean": {
+      "classes.txt": [
+        "Blackbean",
+        "Canola",
+        "Corn",
+        "Field Pea",
+        "Flax",
+        "Horseweed",
+        "Kochia",
+        "Lentil",
+        "Ragweed",
+        "Redroot Pigweed",
+        "Soybean",
+        "Sugar beet",
+        "Waterhemp"
+      ],
+      "n_files": 281
+    },
+    "Sugar_beet": {
+      "classes.txt": [
+        "Blackbean",
+        "Canola",
+        "Corn",
+        "Field Pea",
+        "Flax",
+        "Horseweed",
+        "Kochia",
+        "Lentil",
+        "Ragweed",
+        "Redroot Pigweed",
+        "Soybean",
+        "Sugar beet",
+        "Waterhemp"
+      ],
+      "n_files": 281
+    }
+  },
+  "classes_txt_consistent_across_folders": true,
+  "class_id_inconsistencies": {},
+  "n_documented_classes": 13,
+  "class_to_yolo_id": {
+    "Blackbean": 0,
+    "Canola": 1,
+    "Corn": 2,
+    "Field Pea": 3,
+    "Flax": 4,
+    "Horseweed": 5,
+    "Kochia": 6,
+    "Lentil": 7,
+    "Ragweed": 8,
+    "Redroot Pigweed": 9,
+    "Soybean": 10,
+    "Sugar beet": 11,
+    "Waterhemp": 12
+  },
+  "unclassified_names": {},
+  "counts": {
+    "labeled_images": 1120,
+    "missing_labels": 0,
+    "missing_label_examples": [],
+    "empty_label_files": 0,
+    "empty_examples": [],
+    "parse_errors": 0,
+    "parse_error_examples": [],
+    "illegal_or_out_of_range": 420,
+    "illegal_by_class": {
+      "Blackbean": 36,
+      "Ragweed": 10,
+      "Canola": 60,
+      "Waterhemp": 4,
+      "Horseweed": 3,
+      "Corn": 77,
+      "Field Pea": 57,
+      "Kochia": 5,
+      "Flax": 41,
+      "Lentil": 32,
+      "Redroot Pigweed": 3,
+      "Soybean": 64,
+      "Sugar beet": 28
+    },
+    "illegal_examples": [
+      {
+        "file": "Black_bean/field_1647568311906_13.JPG",
+        "line": 7,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.79,
+          0.88,
+          0.37,
+          0.25
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647568974856_349.JPG",
+        "line": 12,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.69,
+          0.97,
+          0.12,
+          0.07
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647568975934_350.JPG",
+        "line": 2,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.83,
+          0.34,
+          0.35,
+          0.33
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647569410444_26.JPG",
+        "line": 7,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.15,
+          0.91,
+          0.28,
+          0.19
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647570635045_559.JPG",
+        "line": 4,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.83,
+          0.08,
+          0.14,
+          0.17
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647570655456_573.JPG",
+        "line": 3,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.8,
+          0.91,
+          0.18,
+          0.19
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647570922703_768.JPG",
+        "line": 7,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.07,
+          0.94,
+          0.08,
+          0.13
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647570940288_781.JPG",
+        "line": 3,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.8,
+          0.89,
+          0.18,
+          0.23
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647570944596_784.JPG",
+        "line": 11,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.14,
+          0.88,
+          0.14,
+          0.25
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647572811784_991.JPG",
+        "line": 8,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.94,
+          0.12,
+          0.11,
+          0.25
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647573223394_1283.JPG",
+        "line": 4,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.1,
+          0.94,
+          0.11,
+          0.13
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647573223394_1283.JPG",
+        "line": 7,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.78,
+          0.88,
+          0.15,
+          0.25
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647575308236_1282.JPG",
+        "line": 12,
+        "reason": "illegal_norm_coords",
+        "class": "Ragweed",
+        "xywh": [
+          0.97,
+          0.98,
+          0.06,
+          0.05
+        ]
+      },
+      {
+        "file": "Black_bean/field_1647575423697_1394.JPG",
+        "line": 10,
+        "reason": "illegal_norm_coords",
+        "class": "Ragweed",
+        "xywh": [
+          0.39,
+          0.97,
+          0.11,
+          0.07
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660569617711_7.JPG",
+        "line": 16,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.96,
+          0.78,
+          0.09,
+          0.11
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660569630958_18.JPG",
+        "line": 21,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.95,
+          0.19,
+          0.11,
+          0.18
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660569634639_21.JPG",
+        "line": 22,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.98,
+          0.86,
+          0.05,
+          0.13
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660673970588_13.JPG",
+        "line": 23,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.69,
+          0.88,
+          0.11,
+          0.25
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660674725427_14.JPG",
+        "line": 31,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.02,
+          0.76,
+          0.05,
+          0.14
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660680352898_21.JPG",
+        "line": 19,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.96,
+          0.92,
+          0.09,
+          0.15
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660680363048_24.JPG",
+        "line": 12,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.69,
+          0.93,
+          0.14,
+          0.15
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660681204759_11.JPG",
+        "line": 14,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.97,
+          0.35,
+          0.07,
+          0.22
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660681208795_13.JPG",
+        "line": 20,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.91,
+          0.33,
+          0.19,
+          0.24
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660681216525_15.JPG",
+        "line": 3,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.06,
+          0.78,
+          0.13,
+          0.25
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660681246023_22.JPG",
+        "line": 12,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.97,
+          0.22,
+          0.07,
+          0.11
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660681251669_24.JPG",
+        "line": 7,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.13,
+          0.92,
+          0.14,
+          0.17
+        ]
+      },
+      {
+        "file": "Black_bean/field_1660681251669_24.JPG",
+        "line": 24,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.02,
+          0.05,
+          0.05,
+          0.09
+        ]
+      },
+      {
+        "file": "Black_bean/field_cas22_1657833307597_25.JPG",
+        "line": 27,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.41,
+          0.03,
+          0.06,
+          0.07
+        ]
+      },
+      {
+        "file": "Black_bean/field_cas22_1657833405649_42.JPG",
+        "line": 18,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.97,
+          0.78,
+          0.07,
+          0.08
+        ]
+      },
+      {
+        "file": "Black_bean/field_cas22_1657834482531_8.JPG",
+        "line": 6,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.09,
+          0.81,
+          0.19,
+          0.19
+        ]
+      },
+      {
+        "file": "Black_bean/field_cas22_1657834488212_13.JPG",
+        "line": 7,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.09,
+          0.79,
+          0.19,
+          0.23
+        ]
+      },
+      {
+        "file": "Black_bean/field_cas22_1657834499568_40.JPG",
+        "line": 1,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.06,
+          0.2,
+          0.13,
+          0.19
+        ]
+      },
+      {
+        "file": "Black_bean/field_cas22_1657835256914_45.JPG",
+        "line": 7,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.91,
+          0.33,
+          0.19,
+          0.15
+        ]
+      },
+      {
+        "file": "Black_bean/field_cas22_1657835258998_59.JPG",
+        "line": 24,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.71,
+          0.02,
+          0.08,
+          0.05
+        ]
+      },
+      {
+        "file": "Black_bean/field_cas22_1657835287049_25.JPG",
+        "line": 33,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.61,
+          0.02,
+          0.03,
+          0.05
+        ]
+      },
+      {
+        "file": "Black_bean/field_cas22_1657835320035_29.JPG",
+        "line": 6,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.94,
+          0.25,
+          0.13,
+          0.13
+        ]
+      },
+      {
+        "file": "Black_bean/field_cas22_1657835685724_35.JPG",
+        "line": 13,
+        "reason": "illegal_norm_coords",
+        "class": "Blackbean",
+        "xywh": [
+          0.19,
+          0.98,
+          0.06,
+          0.05
+        ]
+      },
+      {
+        "file": "Black_bean/field_cas22_1657835686665_41.JPG",
+        "line": 25,
+        "reason": "illegal_norm_coords",
+        "class": "Ragweed",
+        "xywh": [
+          0.98,
+          0.71,
+          0.05,
+          0.08
+        ]
+      },
+      {
+        "file": "Canola/field_1647569680704_341.JPG",
+        "line": 11,
+        "reason": "illegal_norm_coords",
+        "class": "Canola",
+        "xywh": [
+          0.79,
+          0.14,
+          0.36,
+          0.29
+        ]
+      },
+      {
+        "file": "Canola/field_1647569726486_411.JPG",
+        "line": 14,
+        "reason": "illegal_norm_coords",
+        "class": "Canola",
+        "xywh": [
+          0.73,
+          0.9,
+          0.21,
+          0.21
+        ]
+      },
+      {
+        "file": "Canola/field_1647569750950_449.JPG",
+        "line": 7,
+        "reason": "illegal_norm_coords",
+        "class": "Canola",
+        "xywh": [
+          0.21,
+          0.95,
+          0.36,
+          0.11
+        ]
+      },
+      {
+        "file": "Canola/field_1647569874473_638.JPG",
+        "line": 4,
+        "reason": "illegal_norm_coords",
+        "class": "Canola",
+        "xywh": [
+          0.18,
+          0.92,
+          0.19,
+          0.17
+        ]
+      },
+      {
+        "file": "Canola/field_1647569975049_806.JPG",
+        "line": 10,
+        "reason": "illegal_norm_coords",
+        "class": "Canola",
+        "xywh": [
+          0.67,
+          0.91,
+          0.26,
+          0.19
+        ]
+      },
+      {
+        "file": "Canola/field_1647570328235_293.JPG",
+        "line": 4,
+        "reason": "illegal_norm_coords",
+        "class": "Canola",
+        "xywh": [
+          0.18,
+          0.89,
+          0.3,
+          0.23
+        ]
+      },
+      {
+        "file": "Canola/field_1647570328235_293.JPG",
+        "line": 12,
+        "reason": "illegal_norm_coords",
+        "class": "Ragweed",
+        "xywh": [
+          0.43,
+          0.93,
+          0.1,
+          0.15
+        ]
+      },
+      {
+        "file": "Canola/field_1647570798440_677.JPG",
+        "line": 8,
+        "reason": "illegal_norm_coords",
+        "class": "Canola",
+        "xywh": [
+          0.76,
+          0.95,
+          0.19,
+          0.11
+        ]
+      },
+      {
+        "file": "Canola/field_1647570821781_694.JPG",
+        "line": 2,
+        "reason": "illegal_norm_coords",
+        "class": "Canola",
+        "xywh": [
+          0.2,
+          0.89,
+          0.24,
+          0.23
+        ]
+      },
+      {
+        "file": "Canola/field_1647570821781_694.JPG",
+        "line": 8,
+        "reason": "illegal_norm_coords",
+        "class": "Canola",
+        "xywh": [
+          0.23,
+          0.13,
+          0.17,
+          0.27
+        ]
+      },
+      {
+        "file": "Canola/field_1647570895300_747.JPG",
+        "line": 8,
+        "reason": "illegal_norm_coords",
+        "class": "Waterhemp",
+        "xywh": [
+          0.52,
+          0.96,
+          0.23,
+          0.09
+        ]
+      },
+      {
+        "file": "Canola/field_1647575005868_926.JPG",
+        "line": 1,
+        "reason": "illegal_norm_coords",
+        "class": "Canola",
+        "xywh": [
+          0.13,
+          0.92,
+          0.16,
+          0.17
+        ]
+      }
+    ],
+    "degenerate_boxes": 0,
+    "n_unique_image_dimensions": 833,
+    "most_common_image_dimensions": {
+      "6960x4640": 264,
+      "3991x4640": 3,
+      "4373x4640": 2,
+      "4877x4640": 2,
+      "5474x4640": 2
+    },
+    "min_max_image_dims": [
+      "929x1741",
+      "6960x4640"
+    ],
+    "boxes_total": 17693,
+    "boxes_by_class": {
+      "Ragweed": 1086,
+      "Blackbean": 1970,
+      "Kochia": 851,
+      "Redroot Pigweed": 635,
+      "Waterhemp": 695,
+      "Horseweed": 407,
+      "Lentil": 1706,
+      "Soybean": 2877,
+      "Flax": 1745,
+      "Canola": 1804,
+      "Field Pea": 1384,
+      "Corn": 1476,
+      "Sugar beet": 1057
+    },
+    "boxes_by_folder_class": {
+      "Black_bean": {
+        "Ragweed": 117,
+        "Blackbean": 1961,
+        "Kochia": 107,
+        "Redroot Pigweed": 84,
+        "Waterhemp": 108,
+        "Horseweed": 52,
+        "Lentil": 1,
+        "Soybean": 21,
+        "Flax": 3
+      },
+      "Canola": {
+        "Canola": 1780,
+        "Ragweed": 150,
+        "Kochia": 85,
+        "Blackbean": 3,
+        "Horseweed": 64,
+        "Waterhemp": 70,
+        "Redroot Pigweed": 88
+      },
+      "Corn": {
+        "Field Pea": 7,
+        "Corn": 1476,
+        "Ragweed": 102,
+        "Redroot Pigweed": 99,
+        "Kochia": 76,
+        "Waterhemp": 88,
+        "Horseweed": 46
+      },
+      "Field_pea": {
+        "Field Pea": 1377,
+        "Redroot Pigweed": 92,
+        "Kochia": 106,
+        "Waterhemp": 86,
+        "Ragweed": 94,
+        "Horseweed": 47,
+        "Soybean": 6
+      },
+      "Flax": {
+        "Flax": 1721,
+        "Kochia": 127,
+        "Redroot Pigweed": 66,
+        "Waterhemp": 99,
+        "Ragweed": 121,
+        "Horseweed": 49,
+        "Soybean": 8,
+        "Canola": 9
+      },
+      "Lentil": {
+        "Lentil": 1697,
+        "Soybean": 17,
+        "Redroot Pigweed": 79,
+        "Waterhemp": 60,
+        "Kochia": 120,
+        "Sugar beet": 9,
+        "Blackbean": 6,
+        "Ragweed": 127,
+        "Horseweed": 48,
+        "Canola": 1
+      },
+      "Soybean": {
+        "Soybean": 2791,
+        "Waterhemp": 98,
+        "Kochia": 110,
+        "Redroot Pigweed": 88,
+        "Ragweed": 207,
+        "Horseweed": 63
+      },
+      "Sugar_beet": {
+        "Sugar beet": 1048,
+        "Redroot Pigweed": 39,
+        "Lentil": 8,
+        "Ragweed": 168,
+        "Kochia": 120,
+        "Waterhemp": 86,
+        "Flax": 21,
+        "Horseweed": 38,
+        "Canola": 14,
+        "Soybean": 34
+      }
+    }
+  },
+  "weed_only_mapping": {
+    "weed_species": {
+      "Horseweed": 5,
+      "Kochia": 6,
+      "Ragweed": 8,
+      "Redroot Pigweed": 9,
+      "Waterhemp": 12
+    },
+    "crop_species_excluded": {
+      "Blackbean": 0,
+      "Canola": 1,
+      "Corn": 2,
+      "Field Pea": 3,
+      "Flax": 4,
+      "Lentil": 7,
+      "Soybean": 10,
+      "Sugar beet": 11
+    },
+    "weed_boxes_kept": 3674,
+    "crop_boxes_dropped_as_background": 14019,
+    "validity": "structurally valid: map the 5 weed species ids to 0 and drop the 8 crop species ids; original labels are preserved and the conversion is a derived copy",
+    "residual_risk": "unannotated weeds inside crop scenes become systematic false negatives; manual review of CornWeed does not cover this dataset — a preregistered sample of Weed-crop V2 would be needed before any weed-only TRAINING use (external evaluation-only use is unaffected because the external protocol evaluates full 13-class or weed-only predictions as declared)"
+  }
+}

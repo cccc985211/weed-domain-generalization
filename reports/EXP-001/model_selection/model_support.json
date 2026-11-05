@@ -1,0 +1,6 @@
+{
+  "ultralytics_version": "8.4.182",
+  "torch_version": "2.3.1+cu121",
+  "cuda_available": true,
+  "yolo26_cfg_present": true
+}

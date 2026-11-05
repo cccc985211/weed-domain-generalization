@@ -1,0 +1,57 @@
+# EXP-001C — Frozen leave-one-stream-out (LOSO) split protocol for CornWeed
+# Approved by reviewer as "Option A" (EXP-001B review, 2026-11-05).
+# Generator: tools/make_loso_split.py (must reproduce manifest hashes byte-for-byte).
+
+protocol_id: EXP001C-LOSO-v1
+dataset: CornWeed (Zenodo 7961764, CC-BY-4.0, archive MD5 9b409e835b51c0f7b01524dcb1dfeda6)
+source_root: "<WORKSPACE>/datasets/CornWeed/maize_dataset"   # outside git; read-only
+labeled_population: 3574   # data/ images only; the unlabeled testing/ dir is NEVER used
+
+streams:
+  - Langsenkamp_210722_bonirob
+  - Langsenkamp_210727_bonirob
+  - Langsenkamp_210727_handheld
+# Langsenkamp_210802_bonirob exists only among unlabeled test images and is excluded.
+
+folds:
+  fold1: {test_stream: Langsenkamp_210722_bonirob,  internal: [Langsenkamp_210727_bonirob, Langsenkamp_210727_handheld]}
+  fold2: {test_stream: Langsenkamp_210727_bonirob,  internal: [Langsenkamp_210722_bonirob, Langsenkamp_210727_handheld]}
+  fold3: {test_stream: Langsenkamp_210727_handheld, internal: [Langsenkamp_210722_bonirob, Langsenkamp_210727_bonirob]}
+
+train_val_split:            # inside each internal stream, time-continuous blocks
+  rule: "frame blocks of 50 taken every 60 frames; the 10 frames between blocks are a buffer zone excluded from train and val"
+  block_frames: 50
+  period_frames: 60         # 50 block + 10 buffer
+  buffer_policy: "frames in buffer zones get role=buffer and are used by neither training nor validation"
+  tail_policy: "frames beyond the last full 60-frame period are buffer"
+  assignment: "sha256(f'{stream}|{block_index}|EXP001C-LOSO-v1') mod 100 -> [0,80) train, [80,100) val"
+  salt: EXP001C-LOSO-v1
+  train_pct: 80
+
+duplicate_filtering:        # applied per fold, priority test > train > val
+  exact: "SHA-256 equal images never appear in two different active roles of the same fold; lower-priority copy is marked excluded_duplicate"
+  phash:
+    method: "64-bit pHash, union-find clustering, equal image dimensions only"
+    hamming_threshold: 6
+    review: "machine heuristic; any conflict involving train/val/test is written to duplicates_conflicts.csv and marked pending_human_review"
+  note: "2026-11-05 run: 0 cross-role conflicts found (machine audit); buffer-zone pHash overlaps are counted in split_stats.json only"
+
+forbidden:
+  - "using the test stream to select hyperparameters, epochs, or weights"
+  - "training on the unlabeled testing/ directory"
+  - "modifying original images or labels"
+  - "regenerating splits with a different salt without a new protocol id and reviewer approval"
+
+artifacts:                  # generated 2026-11-05, frozen
+  manifest: reports/EXP-001C/split_manifest.csv
+  manifest_sha256: 54dc46a34e44318f99781e51f9bc2950266111b54bf0d31c0fa3e0af9fe22979
+  conflicts_csv: reports/EXP-001C/duplicates_conflicts.csv
+  conflicts_csv_sha256: e074fd40a1ab047bd516fe83f4cfaca4dc252fc9b80c3c41a64662f23f8ad1ad
+  stats: reports/EXP-001C/split_stats.json
+
+manual_annotation_sample:   # prerequisite for weed-only conversion approval
+  package: reports/EXP-001C/annotation_review/
+  sample_selection_sha256: eb3cd768139e3676ccf71f68257a5c7a7ab6e727922dd4175a369c3e9e9c7352
+  seed: 42
+  per_stream: {random: 20, hard: 10}
+  status: PENDING_HUMAN_REVIEW   # must not be marked PASS before human confirmation
