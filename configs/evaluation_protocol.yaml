@@ -1,0 +1,54 @@
+# EXP-001C — Frozen evaluation protocol (YOLO26 dual-head)
+# Basis: reports/EXP-001/model_selection/yolo26_val_diagnosis.md — after 2 epochs on
+# a 1-class task the one2many+NMS head is miscalibrated (P=0.024, mAP50=0.037) while
+# the one2one head is unaffected (mAP50=0.432). Both heads are therefore reported
+# under fixed settings; checkpoint selection uses the PRIMARY protocol only.
+
+protocol_id: EXP001C-EVAL-v1
+framework: ultralytics==8.4.182
+
+primary_protocol:
+  name: one2many+NMS
+  call: "model.val(data=..., nms=None, ...)  # default ultralytics validation head"
+  main_metric: mAP50-95
+  also_report: [mAP50, precision, recall]
+
+auxiliary_protocol:
+  name: one2one
+  call: "model.val(data=..., nms=False, ...)  # one2one head, NMS-free"
+  main_metric: mAP50-95
+  also_report: [inference_speed_ms_per_image]
+
+fixed_eval_hyperparameters:
+  imgsz: 640
+  batch: 8
+  workers: 0            # Windows requirement
+  device: 0             # RTX 3090
+  seed: 42
+  deterministic: true
+  amp: true
+  plots: false
+  save_json: false
+  conf: 0.001
+  iou: 0.7
+  single_cls: false
+
+checkpoint_selection:
+  criterion: "highest primary-protocol mAP50-95 on the fold-internal validation set only"
+  forbidden: "never select checkpoints, epochs, or hyperparameters using the fold test stream, the external domain, or synthetic smoke metrics"
+
+prohibitions:
+  - "no hyperparameter, threshold, or model-choice decisions based on synthetic smoke mAP (datasets_derived/smoke_weed_v1)"
+  - "no accuracy evaluation of any model on the external domain (Weed-crop V2) until its frozen external protocol is approved"
+  - "no target-domain (external test) metric may drive design decisions"
+
+external_evaluation:
+  dataset: "Weed-crop V2 (Mendeley mthv4ppwyw v2, DOI 10.17632/mthv4ppwyw.2)"
+  audit_report: reports/EXP-001C/external_dataset_audit.md
+  mapping: "weed-only: 5 weed species -> class 0; 8 crop species excluded as background; original labels preserved"
+  usage: "frozen external evaluation protocol ONLY in this phase; no model accuracy runs"
+
+reporting:
+  - "always state which head produced a number"
+  - "when comparing models, report both protocols or the primary protocol consistently"
+  - "record eval YAML overrides alongside run artifacts"

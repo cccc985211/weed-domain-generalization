@@ -1,0 +1,13 @@
+{
+  "sample_selection_sha256": "eb3cd768139e3676ccf71f68257a5c7a7ab6e727922dd4175a369c3e9e9c7352",
+  "seed": 42,
+  "contact_sheets": {
+    "Langsenkamp_210722_bonirob_random20": "582a298359b256aeca26e0138e8513c30901e9e0386d8ef2fbae9dca280e3a4c",
+    "Langsenkamp_210722_bonirob_hard10": "b0a0a1565f115bb2dd64f69dd08a1e2ba437d776b38b3c4a11a62896300cdc91",
+    "Langsenkamp_210727_bonirob_random20": "766237d0141bf870716079b6a0a13a4f2dff30460b893c23dab656787bee061a",
+    "Langsenkamp_210727_bonirob_hard10": "a496287844251b69a1c4689641c0f1d6978e5c5ee449fe3327634d2d0e7f3092",
+    "Langsenkamp_210727_handheld_random20": "c6ffadf7d36f83832a004c81f101262745b7401634d6d2b9e54aa03481ca843d",
+    "Langsenkamp_210727_handheld_hard10": "2508233e4f197fd087a7a5f8e702475ae8601acf42869f9df56624f2b00bf07d"
+  },
+  "panels_dir": "runs/EXP-001C/annotation_panels/<stream>/"
+}
